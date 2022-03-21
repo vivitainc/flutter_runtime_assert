@@ -1,7 +1,7 @@
 name: runtime_assert
 description: Assert functions.
 version: 0.0.1
-homepage: https://github.com/vivitainc/flutter_stdlib_plus
+homepage: https://github.com/vivitainc/flutter_runtime_assert
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 environment:

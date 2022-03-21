@@ -1,17 +1,24 @@
-import 'environments.dart';
-import 'error/illegal_argument_exception.dart';
-import 'error/illegal_state_exception.dart';
-import 'error/unsupported_platform_exception.dart';
+import 'dart:io' as io;
+
+import 'package:flutter/foundation.dart';
+
+import 'illegal_argument_exception.dart';
+import 'illegal_state_exception.dart';
+import 'unsupported_platform_exception.dart';
+
+/// FlutterのUnitTest($ flutter test)として実行中であればtrueを返却する.
+bool get _isFlutterTesting =>
+    !kIsWeb && io.Platform.environment.containsKey('FLUTTER_TEST');
 
 /// UnitTestであることを保証する.
 /// 間違って呼び出さないようにするための保険.
 void assertTesting() {
   assert(
-    Environments.isFlutterTesting,
+    _isFlutterTesting,
     'Invalid runtime',
   ); // Build phase check.
   check(
-    Environments.isFlutterTesting,
+    _isFlutterTesting,
     () => 'Invalid runtime',
   ); // Runtime phase check.
 }
